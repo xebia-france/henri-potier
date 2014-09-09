@@ -24,7 +24,7 @@ var BOOKS = [
     {isbn: "c30968db-cb1d-442e-ad0f-80e37c077f89", title: "Henri Potier et la Coupe de feu", price: 29.0},
     {isbn: "78ee5f25-b84f-45f7-bf33-6c7b30f1b502", title: "Henri Potier et l'Ordre du phénix", price: 28.0},
     {isbn: "cef179f2-7cbc-41d6-94ca-ecd23d9f7fd6", title: "Henri Potier et le Prince de sang-mêlé", price: 30.0},
-    {isbn: "fcd1e6fa-a63f-4f75-9da4-b560020b6acc", title: "Henri Potier et les Reliques de la Mort", price: 35.0},
+    {isbn: "bbcee412-be64-4a0c-bf1e-315977acd924", title: "Henri Potier et les Reliques de la Mort", price: 35.0},
   ];
 
 var BOOKS_BY_ISBN = _.indexBy(BOOKS, 'isbn');
