@@ -48,11 +48,7 @@ app.get('/books/:ids/commercialOffers', function (request, response) {
   var booksCount = matchingIds.length;
 
   var offers = [];
-  if (booksCount <= 0) {
-    offers = [
-      {type:"percentage", value: baseReduction}
-    ];
-  } else if (booksCount >= 1 && booksCount < 2) {
+  if (booksCount < 2) {
     offers = [
       {type:"percentage", value: baseReduction}
     ];
