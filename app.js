@@ -14,7 +14,7 @@ app.all('*', function(req, res, next) {
  });
 
 app.get('/', function(request, response) {
-  response.send('Welcome to Henri Potier\'s books.');
+  response.send('Bienvenue dans la librairie de Henri Potier.');
 });
 
 var BOOKS = [
