@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var _ = require('lodash');
 var moment = require('moment');
+var books = require('./public/books.json');
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
@@ -17,15 +18,7 @@ app.get('/', function(request, response) {
   response.send('Bienvenue dans la librairie de Henri Potier');
 });
 
-var BOOKS = [
-    {isbn: "c8fabf68-8374-48fe-a7ea-a00ccd07afff", title: "Henri Potier à l'école des sorciers", price: 35.0, cover: 'http://henri-potier.xebia.fr/hp0.jpg'},
-    {isbn: "a460afed-e5e7-4e39-a39d-c885c05db861", title: "Henri Potier et la Chambre des secrets", price: 30.0, cover: 'http://henri-potier.xebia.fr/hp1.jpg'},
-    {isbn: "fcd1e6fa-a63f-4f75-9da4-b560020b6acc", title: "Henri Potier et le Prisonnier d'Azkaban", price: 30.0, cover: 'http://henri-potier.xebia.fr/hp2.jpg'},
-    {isbn: "c30968db-cb1d-442e-ad0f-80e37c077f89", title: "Henri Potier et la Coupe de feu", price: 29.0, cover: 'http://henri-potier.xebia.fr/hp3.jpg'},
-    {isbn: "78ee5f25-b84f-45f7-bf33-6c7b30f1b502", title: "Henri Potier et l'Ordre du phénix", price: 28.0, cover: 'http://henri-potier.xebia.fr/hp4.jpg'},
-    {isbn: "cef179f2-7cbc-41d6-94ca-ecd23d9f7fd6", title: "Henri Potier et le Prince de sang-mêlé", price: 30.0, cover: 'http://henri-potier.xebia.fr/hp5.jpg'},
-    {isbn: "bbcee412-be64-4a0c-bf1e-315977acd924", title: "Henri Potier et les Reliques de la Mort", price: 35.0, cover: 'http://henri-potier.xebia.fr/hp6.jpg'}
-  ];
+var BOOKS = books;
 
 var BOOKS_BY_ISBN = _.indexBy(BOOKS, 'isbn');
 var ISBNS = _.keys(BOOKS_BY_ISBN);
