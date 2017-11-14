@@ -9,7 +9,7 @@
     "build": "mkdir dist && cp app.js dist/app.js && cp -R public dist/public"
   },
   "dependencies": {
-    "express": "3.4.8",
+    "express": "^4.16.2",
     "lodash": "2.4.1",
     "moment": "2.8.3"
   },

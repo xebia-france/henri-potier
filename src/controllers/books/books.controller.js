@@ -5,7 +5,11 @@ class BooksController {
     this.service = service;
   }
 
-  getAll(request, response) {
+  initRoutes(router) {
+    router.get('/books', this._getAll.bind(this));
+  }
+
+  _getAll(request, response) {
     response
       .status(200)
       .json(this.service.getAll());
