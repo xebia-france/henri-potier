@@ -1,18 +1,27 @@
 {
-    "name": "HenriPotier",
-    "version": "0.1.0",
-    "description": "Backend for Henri Potiers books",
-    "dependencies": {
-        "express": "3.4.8",
-        "lodash": "2.4.1",
-        "moment": "2.8.3"
-    },
-    "engines": {
-        "node": "0.10.x"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/heroku/node-js-getting-started"
-    },
-    "license": "MIT"
+  "name": "HenriPotier",
+  "version": "0.1.0",
+  "author": "Xebia-France",
+  "description": "Backend for Henri Potiers books",
+  "scripts": {
+    "start": "node app.js",
+    "start:dev": "nodemon app.js",
+    "build": "mkdir dist && cp app.js dist/app.js && cp -R public dist/public"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "lodash": "2.4.1",
+    "moment": "2.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "engines": {
+    "node": "8.x.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xebia-france/henri-potier"
+  },
+  "license": "MIT"
 }

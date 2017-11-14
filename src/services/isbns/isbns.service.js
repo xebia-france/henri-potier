@@ -1,0 +1,3 @@
+class IsbnsService {
+  constructor() {}
+}
