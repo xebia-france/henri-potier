@@ -2,7 +2,7 @@ const commercialOffersService = require('../../services/commercial-offers/commer
 
 class CommercialOffersController {
   constructor(service = commercialOffersService) {
-    this.service = service;
+    this.books = service;
   }
 
   initRoutes(router) {
@@ -12,7 +12,7 @@ class CommercialOffersController {
   _getByIds(request, response) {
     let ids = request.params.ids.split(',').map((id) => id.trim());
     response.json({
-      offers: this.service.getByIds(ids)
+      offers: this.books.getByIds(ids)
     });
   }
 }

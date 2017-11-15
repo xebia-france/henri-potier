@@ -4,9 +4,8 @@
   "author": "Xebia-France",
   "description": "Backend for Henri Potiers books",
   "scripts": {
-    "start": "node app.js",
-    "start:dev": "nodemon app.js",
-    "build": "mkdir dist && cp app.js dist/app.js && cp -R public dist/public"
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
   },
   "dependencies": {
     "express": "^4.16.2",
@@ -19,7 +18,7 @@
   "engines": {
     "node": "8.x.x"
   },
-  "repository": {
+  "books": {
     "type": "git",
     "url": "https://github.com/xebia-france/henri-potier"
   },

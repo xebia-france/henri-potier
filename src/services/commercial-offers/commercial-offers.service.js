@@ -1,53 +1,30 @@
-const _ = require('lodash');
-const moment = require('moment');
-
-const BOOKS = require('../../../public/books.json');
-const BOOKS_BY_ISBN = _.indexBy(BOOKS, 'isbn');
-const ISBNS = _.keys(BOOKS_BY_ISBN);
+const isbnsService = require('../isbns/isbns.service');
+const minusOfferService = require('./minus-offer/minus-offer.service');
+const percentageOfferService = require('./percentage-offer/percentage-offer.service');
+const sliceOfferService = require('./slice-offer/slice-offer.service');
 
 class CommercialOffersService {
-  constructor() {}
+  constructor() {
+    this.isbns = isbnsService;
+    this.minusOffer = minusOfferService;
+    this.percentageOffer = percentageOfferService;
+    this.sliceOffer = sliceOfferService;
+  }
 
   getByIds(ids) {
-    const matchingIds = _.filter(ids, (id) => _.contains(ISBNS, id));
-    const booksCount = matchingIds.length;
+    const booksCount = this.isbns.filter(ids).length;
     let offers = [];
     this._add(offers, booksCount);
     return offers;
   }
 
   _add(offers, booksCount) {
-    offers.push(this._computePercentageOffer(booksCount));
+    offers.push(this.percentageOffer.compute(booksCount));
     if (booksCount >= 2) {
       offers.push(
-        this._computeMinusOffer(booksCount),
-        this._computeSliceOffer(booksCount)
+        this.minusOffer.compute(booksCount),
+        this.sliceOffer.compute(booksCount)
       );
-    }
-  }
-
-  _computeMinusOffer(booksCount) {
-    if (booksCount < 4) {
-      return {type: "minus", value: 15};
-    } else {
-      return {type: "minus", value: 30};
-    }
-  }
-
-  _computePercentageOffer(booksCount) {
-    const baseReduction = moment().hour() > 12 ? 4 : 5;
-    if (booksCount < 4) {
-      return {type: "percentage", value: baseReduction};
-    } else {
-      return {type: "percentage", value: baseReduction * 2};
-    }
-  }
-
-  _computeSliceOffer(booksCount) {
-    if (booksCount < 4) {
-      return {type: "slice", sliceValue: 100, value: 12};
-    } else {
-      return {type: "slice", sliceValue: 80, value: 14};
     }
   }
 }

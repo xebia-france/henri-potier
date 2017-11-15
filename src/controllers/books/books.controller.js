@@ -2,7 +2,7 @@ const booksService = require('../../services/books/books.service');
 
 class BooksController {
   constructor(service = booksService) {
-    this.service = service;
+    this.books = service;
   }
 
   initRoutes(router) {
@@ -12,7 +12,7 @@ class BooksController {
   _getAll(request, response) {
     response
       .status(200)
-      .json(this.service.getAll());
+      .json(this.books.getAll());
   }
 }
 

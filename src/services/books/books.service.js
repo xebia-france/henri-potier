@@ -1,12 +1,12 @@
 const booksRepository = require('../../repositories/books/books.repository');
 
 class BooksService {
-  constructor(repository = booksRepository) {
-    this.repository = repository;
+  constructor() {
+    this.books = booksRepository;
   }
 
   getAll() {
-    return this.repository.getAll();
+    return this.books.getAll();
   }
 }
 
