@@ -2,6 +2,7 @@ const isbnsService = require('../isbns/isbns.service');
 const minusOfferService = require('./minus-offer/minus-offer.service');
 const percentageOfferService = require('./percentage-offer/percentage-offer.service');
 const sliceOfferService = require('./slice-offer/slice-offer.service');
+const CommercialOffers = require('../../schemas/commercial-offers');
 
 class CommercialOffersService {
   constructor() {
@@ -15,7 +16,7 @@ class CommercialOffersService {
     const booksCount = this.isbns.filter(ids).length;
     let offers = [];
     this._add(offers, booksCount);
-    return offers;
+    return new CommercialOffers(offers);
   }
 
   _add(offers, booksCount) {

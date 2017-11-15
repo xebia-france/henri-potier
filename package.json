@@ -18,7 +18,7 @@
   "engines": {
     "node": "8.x.x"
   },
-  "books": {
+  "offers": {
     "type": "git",
     "url": "https://github.com/xebia-france/henri-potier"
   },

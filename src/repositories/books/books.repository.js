@@ -2,7 +2,7 @@ const Book = require('../../schemas/book');
 
 class BooksRepository {
   constructor() {
-    this.books = [
+    this.offers = [
       new Book(
         "c8fabf68-8374-48fe-a7ea-a00ccd07afff",
         "Henri Potier à l'école des sorciers",
@@ -78,7 +78,7 @@ class BooksRepository {
   }
 
   getAll() {
-    return this.books;
+    return this.offers;
   }
 }
 

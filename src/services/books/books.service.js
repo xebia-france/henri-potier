@@ -2,11 +2,11 @@ const booksRepository = require('../../repositories/books/books.repository');
 
 class BooksService {
   constructor() {
-    this.books = booksRepository;
+    this.offers = booksRepository;
   }
 
   getAll() {
-    return this.books.getAll();
+    return this.offers.getAll();
   }
 }
 

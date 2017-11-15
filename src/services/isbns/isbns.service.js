@@ -2,11 +2,11 @@ const booksService = require('../books/books.service');
 
 class IsbnsService {
   constructor() {
-    this.books = booksService;
+    this.offers = booksService;
   }
 
   getAll() {
-    return this.books
+    return this.offers
       .getAll()
       .map((book) => book.isbn);
   }
