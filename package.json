@@ -5,7 +5,8 @@
   "description": "Backend for Henri Potiers books",
   "scripts": {
     "start": "node index.js",
-    "start:dev": "nodemon index.js"
+    "serve": "nodemon -e js --watch src --exec \"npm run build && npm run start\"",
+    "build": "cp -R src dist"
   },
   "dependencies": {
     "express": "^4.16.2",
