@@ -1,11 +1,10 @@
 sudo: required
 
+language: nodejs
+
 services:
   - docker
 
-before_install:
-  - docker build -t thomrick/henri-potier .
-
 scripts:
-  - echo "build image end"
+  - docker build -t thomrick/henri-potier .
   - docker image ls
