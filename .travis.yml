@@ -1,10 +1,9 @@
 sudo: required
-
-language: node_js
-
 services:
   - docker
 
-scripts:
+script:
   - docker build -t thomrick/henri-potier .
+
+after_script:
   - docker image ls
