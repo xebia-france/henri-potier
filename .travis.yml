@@ -3,7 +3,14 @@ services:
   - docker
 
 script:
-  - docker build -t thomrick/henri-potier .
+  - docker build -t $DOCKER_USERNAME/henri-potier .
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push $DOCKER_USERNAME/henri-potier
+  on:
+    tags: true
 
 after_script:
   - docker image ls
