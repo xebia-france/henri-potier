@@ -3,5 +3,9 @@ sudo: required
 services:
   - docker
 
-scripts:
+before_install:
   - docker build -t thomrick/henri-potier .
+
+scripts:
+  - echo "build image end"
+  - docker image ls
