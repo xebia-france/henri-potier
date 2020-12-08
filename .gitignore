@@ -2,3 +2,4 @@ node_modules
 .idea
 *.iml
 .firebase
+firebase-debug.log
