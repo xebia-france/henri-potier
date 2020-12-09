@@ -1,11 +1,11 @@
-var express = require('express');
-var app = express();
-var _ = require('lodash');
-var moment = require('moment');
-var books = require('./public/books.json');
+const functions = require('firebase-functions');
+const express = require('express');
+const app = express();
+const _ = require('lodash');
+const moment = require('moment');
+const books = require('./books.json');
 
 app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/public'));
 
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -15,32 +15,32 @@ app.all('*', function(req, res, next) {
  });
 
 app.get('/', function(request, response) {
-  response.send('Bienvenue dans la librairie de Henri Potier');
+  response.send('Bienvenue dans la bibliothèque de Henri Potier');
 });
 
-var BOOKS = books;
+const BOOKS = books;
 
-var BOOKS_BY_ISBN = _.indexBy(BOOKS, 'isbn');
-var ISBNS = _.keys(BOOKS_BY_ISBN);
+const BOOKS_BY_ISBN = _.indexBy(BOOKS, 'isbn');
+const ISBNS = _.keys(BOOKS_BY_ISBN);
 
 app.get('/books', function(request, response) {
   response.json(BOOKS);
 });
 
 app.get('/books/:ids/commercialOffers', function (request, response) {
-  var ids = request.params.ids.split(',');
+  let ids = request.params.ids.split(',');
   ids = _.map(ids, function(s) {
     return s.trim();
   });
 
-  var matchingIds = _.filter(ids, function(id) {
+  const matchingIds = _.filter(ids, function (id) {
     return _.contains(ISBNS, id);
   });
 
-  var baseReduction = moment().hour() > 12 ? 4 : 5;
-  var booksCount = matchingIds.length;
+  const baseReduction = moment().hour() > 12 ? 4 : 5;
+  const booksCount = matchingIds.length;
 
-  var offers = [];
+  let offers;
   if (booksCount < 2) {
     offers = [
       {type:"percentage", value: baseReduction}
@@ -62,7 +62,4 @@ app.get('/books/:ids/commercialOffers', function (request, response) {
   response.json({offers:offers});
 });
 
-
-app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'));
-});
+exports.app = functions.https.onRequest(app);
